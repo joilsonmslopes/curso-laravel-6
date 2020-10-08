@@ -1,5 +1,24 @@
 <?php
 
+/** Trabalhando com views */
+// Route::get('/loja', function() {
+//     return view('site.empresa');
+// });
+// Outra forma de usar o view que só é recomendada para páginas estáticas, sem lógica de programação
+Route::view('/loja', 'site.empresa');
+
+/** Trabalhando com redirect */
+/* Forma simplificada de usar o redirect */
+Route::redirect('/loja1', '/loja2');
+
+// Route::get('/loja1', function() {
+//     return redirect('loja2');
+// });
+
+Route::get('/loja2', function() {
+    return 'Loja 02';
+});
+
 /* Passando parâmetro opcional */
 Route::get('/produtos/{idProduct?}/servico', function($idProduct = '') {
     return "Produto(s): {$idProduct}";
