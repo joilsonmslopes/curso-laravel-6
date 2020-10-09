@@ -1,5 +1,14 @@
 <?php
 
+/** Rotas nomeadas */
+Route::get('/redirect3', function() {
+    return redirect()->route('url-name'); // redirecionando para uma rota, ou inves da url, porem tem o mesmo resultado que redirecionar para rota.
+});
+
+Route::get('/nome-url', function() {
+    return "Hello";
+})->name('url-name'); // <- jeito de nomear uma rota
+
 /** Trabalhando com views */
 // Route::get('/loja', function() {
 //     return view('site.empresa');
