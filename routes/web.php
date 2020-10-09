@@ -1,5 +1,39 @@
 <?php
 
+Route::get('/login', function() {
+    return 'Página de Login';
+})->name('login');
+
+/** Grupos de rotas, middlewares, prefix e namespace */
+// Route::middleware([])->group(function() {
+//     Route::prefix('admin')->group(function () {
+//         Route::namespace('Admin')->group(function () {
+//             Route::name('admin.')->group(function() {
+//                 Route::get('/', function() {
+//                     return redirect()->route('admin.dashboard');
+//                 })->name('home');
+            
+//                 Route::get('/dashboard', 'TesteController@teste')->name('dashboard');
+            
+//                 Route::get('/financeiro', 'TesteController@teste')->name('financeiro');
+            
+//                 Route::get('/produtos', 'TesteController@teste')->name('produtos');
+//             });
+//         });
+//     });
+// });
+
+Route::group([
+    'middleware' => [],
+    'prefix' => 'admin',
+    'namespace' => 'Admin'
+], function() {
+    Route::get('/', 'TesteController@teste');
+    Route::get('/dashboard', 'TesteController@teste');
+    Route::get('/financeiro', 'TesteController@teste');
+    Route::get('/produtos', 'TesteController@teste');
+});
+
 /** Rotas nomeadas */
 Route::get('/redirect3', function() {
     return redirect()->route('url-name'); // redirecionando para uma rota, ou inves da url, porem tem o mesmo resultado que redirecionar para rota.
